@@ -1,0 +1,9 @@
+What does booking have:
+    Name
+    Nights
+    Cellphone
+    Payment method
+    Date
+    Beds
+    Amount to pay
+    Status
