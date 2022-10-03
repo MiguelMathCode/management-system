@@ -26,3 +26,7 @@ book = Bookings(name, nights, beds, cellphone, date, payment_mehtod)
 
 
 print(book.name, book.nights, book.cellphone, book.date, book.payment_mehtod, book.status)
+
+book.status = "Accepted"
+
+print(book.status)
