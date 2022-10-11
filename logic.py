@@ -1,5 +1,4 @@
-# This script contains the logic needed to enter new bookings, reschedule,
-# accept, deny, cancel
+" This script contains the logic needed to enter new bookings, reschedule accept, deny, cancel "
 import datetime
 import random
 import string
