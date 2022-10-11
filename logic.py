@@ -13,7 +13,14 @@ class Bookings(BaseModel):
     payment_mehtod: str = None
     status: str | None = "Pending for approval"
 
+    def update_status(self, new_status: str):
+        self.status = new_status
+
 
 first_booking = Bookings(name="Miguel Arrocha", nights=2, beds=1, cellphone="+50762230196", date="2022-10-11", payment_mehtod="cash")
+
+print(first_booking)
+
+first_booking.update_status("Approved")
 
 print(first_booking)
