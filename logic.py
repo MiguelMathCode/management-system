@@ -1,32 +1,19 @@
 # This script contains the logic needed to enter new bookings, reschedule,
 # accept, deny, cancel
-import numpy as np
-from dataclasses import dataclass
+import datetime
+from pydantic import BaseModel
 
 
-@dataclass
-class Bookings:
+class Bookings(BaseModel):
     name: str = None
     nights: int = None
     beds: int = None
     cellphone: str = None
-    date: np.datetime64 = None
+    date: str = None
     payment_mehtod: str = None
-    status: str = "Pending for approval"
+    status: str | None = "Pending for approval"
 
 
-name = input("Enter name of booking: ")
-nights = int(input("Enter amount of nights you want to stay: "))
-beds = int(input("Enter amount of beds you want to your stay: "))
-cellphone = input("Please enter your phone number: ")
-date = np.datetime64(input("Enter date of your stay: "))
-payment_mehtod = input("Enter your payment method: ")
+first_booking = Bookings(name="Miguel Arrocha", nights=2, beds=1, cellphone="+50762230196", date="2022-10-11", payment_mehtod="cash")
 
-book = Bookings(name, nights, beds, cellphone, date, payment_mehtod)
-
-
-print(book.name, book.nights, book.cellphone, book.date, book.payment_mehtod, book.status)
-
-book.status = "Accepted"
-
-print(book.status)
+print(first_booking)
