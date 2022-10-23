@@ -1,2 +1,3 @@
 management-system-env/
 .python-version
+schemas/__pycache__
