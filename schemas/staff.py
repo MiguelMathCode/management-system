@@ -2,10 +2,10 @@
  Make use of composition in order to reduce repetition"""
 
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Extra
 
 
-class Employee(BaseModel):
+class Employee(BaseModel, extra=Extra.allow):
     """Defining the class Employee"""
     name: str = None
     surname: str = None
@@ -16,7 +16,7 @@ class Employee(BaseModel):
 class Recepcionist(Employee):
     """Defining the recepcionist class and its methods"""
 
-    def subs(self):
+    def subscribers(self):
         self.subscribers = set()
     def register(self, who):
         self.subscribers.add(who)
@@ -29,16 +29,11 @@ class Recepcionist(Employee):
 
 class Manager(Employee):
 
-    def __init__(self, name):
-        self.name = name
     def update(self, message):
         print(f'{self.name} got message {message}')
 
 
 class RoomService(Employee):
-
-    def __init__(self, name):
-        self.name = name
 
     def update(self, message):
         print(f"{self.name} got message {message}")
