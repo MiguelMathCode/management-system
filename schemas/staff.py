@@ -2,38 +2,25 @@
  Make use of composition in order to reduce repetition"""
 
 
-from pydantic import BaseModel, Extra
+from pydantic import BaseModel
+from abc import ABC, abstractmethod
+
+class Publisher(ABC):
+
+    def __init__(self):
+        self.subscribers = set()
+
+    @abstractmethod
+    def register(self, who):
+        self.subscribers.add(who)
 
 
-class Employee(BaseModel, extra=Extra.allow):
+class Employee(BaseModel, Publisher):
     """Defining the class Employee"""
     name: str = None
     surname: str = None
     employee_id: str = None
     shift: str = None
 
-
-class Recepcionist(Employee):
-    """Defining the recepcionist class and its methods"""
-
-    def subscribers(self):
-        self.subscribers = set()
     def register(self, who):
         self.subscribers.add(who)
-    def unregister(self, who):
-        self.subscribers.remove(who)
-    def dispatch(self, message):
-        for subscribers in self.subscribers:
-            subscribers.update(message)
-
-
-class Manager(Employee):
-
-    def update(self, message):
-        print(f'{self.name} got message {message}')
-
-
-class RoomService(Employee):
-
-    def update(self, message):
-        print(f"{self.name} got message {message}")
