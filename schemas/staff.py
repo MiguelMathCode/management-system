@@ -4,6 +4,7 @@
 
 from pydantic import BaseModel
 from abc import ABC, abstractmethod
+from typing import Optional
 
 class Publisher(ABC):
 
@@ -12,7 +13,7 @@ class Publisher(ABC):
 
     @abstractmethod
     def register(self, who):
-        self.subscribers.add(who)
+        pass
 
 
 class Employee(BaseModel, Publisher):
@@ -21,6 +22,7 @@ class Employee(BaseModel, Publisher):
     surname: str = None
     employee_id: str = None
     shift: str = None
+    subscribers: Optional[set] = None
 
     def register(self, who):
         self.subscribers.add(who)

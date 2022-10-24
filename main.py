@@ -28,11 +28,13 @@ def main():
             name="Kirito",
             surname="Kazuto",
             employee_id=code_generator(6),
-            shift="day")
+            shift="day",
+            subscribers=set())
     first_booking = Booking(
             name="Miguel Arrocha", nights=2, beds=1, payment_method="cash",
             date=booking_date
             )
+    recep_1.register("Miguel")
     print(first_booking, recep_1, sep='\n')
     first_booking.update_status(new_status="approved")
     print(first_booking)
