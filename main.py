@@ -25,11 +25,11 @@ info_logger.propagate = False
 def main():
     """Main function where everything is tested."""
     recep_1 = Employee(
-            name="Kirito",
-            surname="Kazuto",
-            employee_id=code_generator(6),
-            shift="day",
-            subscribers=set())
+            "Kirito",
+            "Kazuto",
+            code_generator(6),
+            "day",
+            set())
     first_booking = Booking(
             name="Miguel Arrocha", nights=2, beds=1, payment_method="cash",
             date=booking_date

@@ -2,9 +2,9 @@
  Make use of composition in order to reduce repetition"""
 
 
-from pydantic import BaseModel
 from abc import ABC, abstractmethod
 from typing import Optional
+from dataclasses import dataclass
 
 class Publisher(ABC):
 
@@ -16,13 +16,15 @@ class Publisher(ABC):
         pass
 
 
-class Employee(BaseModel, Publisher):
+@dataclass
+class Employee():
     """Defining the class Employee"""
     name: str = None
     surname: str = None
     employee_id: str = None
     shift: str = None
     subscribers: Optional[set] = None
+    publisher: Optional[Publisher] = None
 
     def register(self, who):
         self.subscribers.add(who)
