@@ -3,7 +3,7 @@
 import logging
 from datetime import datetime
 from schemas.booking import Booking
-from schemas.staff import Employee, Publisher
+from schemas.staff import Employee
 from helpers.code_generator import code_generator
 
 booking_date = datetime.strptime("12-10-2022", "%d-%m-%Y")
@@ -28,14 +28,17 @@ def main():
             "Kirito",
             "Kazuto",
             code_generator(6),
-            "day",
-            set())
+            "day")
+    manager_1 = Employee(
+            "Asuna",
+            "Yuuki",
+            code_generator(6),
+            "day")
     first_booking = Booking(
             name="Miguel Arrocha", nights=2, beds=1, payment_method="cash",
             date=booking_date
             )
-    recep_1.register("Miguel")
-    print(first_booking, recep_1, sep='\n')
+    print(first_booking, recep_1, manager_1, sep='\n')
     first_booking.update_status(new_status="approved")
     print(first_booking)
 
