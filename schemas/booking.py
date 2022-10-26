@@ -1,11 +1,11 @@
 " This file defines the booking schema as a class and its attributes "
 import datetime
-from pydantic import BaseModel
 from helpers.code_generator import code_generator
 from dataclasses import dataclass
 
 
-class Booking(BaseModel):
+@dataclass
+class Booking():
     " Defining the class Booking and its attributes "
     name: str = None
     nights: int = None
