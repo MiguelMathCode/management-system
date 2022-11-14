@@ -25,23 +25,22 @@ info_logger.propagate = False
 def main():
     """Main function where everything is tested."""
     recep_1 = Employee(
-            "Kirito",
-            "Kazuto",
-            code_generator(6),
-            "day",
-            Publisher())
+            name="Kirito",
+            surname="Kazuto",
+            employee_id=code_generator(6),
+            shift="day",
+            publisher=Publisher())
     manager_1 = Employee(
-            "Asuna",
-            "Yuuki",
-            code_generator(6),
-            "day",
-            Subscriber)
+            name="Asuna",
+            surname="Yuuki",
+            employee_id=code_generator(6),
+            shift="day",
+            subscriber=Subscriber)
     first_booking = Booking(
             name="Miguel Arrocha", nights=2, beds=1, payment_method="cash",
             date=booking_date
             )
     recep_1.publisher.register(manager_1)
-    print(first_booking)
     first_booking.update_status(new_status="approved")
     recep_1.publisher.dispatch(
             f"Booking {first_booking.booking_code} has just been {first_booking.status}"

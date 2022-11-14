@@ -7,6 +7,7 @@ Make use of composition in order to reduce repetition
 from abc import ABC, abstractmethod
 from typing import Optional, List
 from dataclasses import dataclass
+from pydantic import BaseModel
 
 
 @dataclass
@@ -52,8 +53,7 @@ class Publisher:
             subsciber.update(message)
 
 
-@dataclass
-class Employee:
+class Employee(BaseModel):
     """
     Defining the class Employee
     """
