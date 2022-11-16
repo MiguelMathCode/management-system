@@ -1,6 +1,7 @@
 """This is the main script where test of new implementations have place."""
 
 import logging
+import logging.config
 from datetime import datetime
 from schemas.booking import Booking
 from schemas.staff import Employee, Publisher, Subscriber
@@ -8,18 +9,8 @@ from helpers.code_generator import code_generator
 
 booking_date = datetime.strptime("12-10-2022", "%d-%m-%Y")
 
-logging.basicConfig()
-logging.root.setLevel(logging.NOTSET)
-logging.basicConfig(level=logging.NOTSET)
-info_logger = logging.getLogger(__name__)
-i_handler = logging.StreamHandler()
-i_handler.setLevel(logging.INFO)
-i_format = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
-i_handler.setFormatter(i_format)
-info_logger.addHandler(i_handler)
-info_logger.propagate = False
+logging.config.fileConfig("log.conf")
+info_logger = logging.getLogger("console")
 
 
 def main():
